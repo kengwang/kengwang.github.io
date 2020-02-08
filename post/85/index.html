@@ -1,0 +1,261 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    网易云音乐外链播放器Pro | Kengwang博客
+</title>
+<link rel="shortcut icon" href="https://blog.tysv.top/favicon.ico?v=1581185654205">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.tysv.top/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://blog.tysv.top/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157574292-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-157574292-1');
+    </script>
+    
+        
+            
+
+                    
+                        <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+                        <script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+                        
+                            
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://blog.tysv.top">
+                <img class="avatar" src="https://blog.tysv.top/images/avatar.png?v=1581185654205" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Kengwang博客
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            网易云音乐外链播放器Pro
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-03-03</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="前言">前言</h2>
+<p>作者最近准备给博客搞个背景音乐,然而却发现网易云音乐的外链播放器有些不尽人意(作者有些高标准了......),不支持歌单播放,不支持显示歌词,不支持一键跳转到网易云查看歌曲信息. 于是乎,Kengwang决定自己写一个Pro版本!</p>
+<h2 id="一键蓝链">一键蓝链</h2>
+<p>[button url=&quot;https://github.com/kengwang/NeteaseCloudMusicHTMLPlayer&quot; types=&quot;link&quot;]Github[/button] ↑↑↑↑↑↑↑↑↑↑↑↑ 目前只想发到github上面托管着......</p>
+<h2 id="正文">正文</h2>
+<p>作者又开了一个新坑:网易云音乐外链播放器!调用了一些个网易云的API. 外链播放器也是网易的一个独家特长,也是备受追捧的一个东西,但是仍然有许多不尽人意的地方 比如说:无法显示歌词,不能点击歌手/歌曲跳转到网易云音乐相关信息......</p>
+<h3 id=""><a href="https://github.com/kengwang/NeteaseCloudMusicHTMLPlayer#%E9%A3%8E%E6%A0%BC"></a>风格</h3>
+<p>旧版外链播放器: (图片由于博客搬迁丢失)  新版外链播放器: <strong>设计中</strong></p>
+<h3 id="-2"><a href="https://github.com/kengwang/NeteaseCloudMusicHTMLPlayer#%E4%B8%BB%E8%A6%81%E5%AE%9E%E7%8E%B0"></a>主要实现</h3>
+<ol>
+<li>更多风格</li>
+<li><strong>可以显示歌词</strong></li>
+<li>可以点击歌曲名/歌手名在新页面跳转到网易云相关链接</li>
+</ol>
+<h3 id="-3"><a href="https://github.com/kengwang/NeteaseCloudMusicHTMLPlayer#%E6%9C%80%E5%90%8E%E4%B8%80%E5%8F%A5%E8%AF%9D"></a>最后一句话</h3>
+<p>作者还是个学生党,可能学习比较紧张,也只有周末一点时间可以写代码,这个项目可能会半途而废.但是也希望有人可以接着做下去,所以欢迎Fork!</p>
+<h2 id="写在最后">写在最后</h2>
+<p>也不希望这个项目会废掉吧......也希望我能挺到最后,加油!!! 有许多人反映Multicraft一键脚本用不了了.是的,作者的服务器炸了,所有代码全都没了.现在只有本地和Github上面的备份,也没有大佬愿意帮我托管脚本况且我也不想.代码这个东西需要经常改,放到自己服务器终归要方便一点......</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://blog.tysv.top/post/37">
+                                <h3 class="post-title">
+                                    KMS激活Windows和Office
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E4%B8%80%E9%94%AE%E8%93%9D%E9%93%BE">一键蓝链</a></li>
+<li><a href="#%E6%AD%A3%E6%96%87">正文</a><br>
+*<br>
+*<br>
+*</li>
+<li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  这个博客由 <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>驱动 | 
+  <a class="rss" href="https://blog.tysv.top/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+        
+
+                    
+                        <script>
+    window.onload = function() {
+        var options = {
+            shortname: 'kengwang',
+            apikey: 'BmmgzGzn7RsVvjoeJrWja8kURFy8vuI5oiaYYlp6WdkJA9mXXDKmuwhuyOgVsvWK',
+        }
+        if ('') {
+            options.api = ''
+        }
+        var dsqjs = new DisqusJS(options)
+    }
+</script>
+                            
+                                
+</body>
+
+</html>

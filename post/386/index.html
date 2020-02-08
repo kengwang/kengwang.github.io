@@ -1,0 +1,463 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    [技术分享] 阿里云认证学习笔记 - 实现调用API接口 | Kengwang博客
+</title>
+<link rel="shortcut icon" href="https://blog.tysv.top/favicon.ico?v=1581185654205">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.tysv.top/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://blog.tysv.top/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157574292-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-157574292-1');
+    </script>
+    
+        
+            
+
+                    
+                        <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+                        <script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+                        
+                            
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://blog.tysv.top">
+                <img class="avatar" src="https://blog.tysv.top/images/avatar.png?v=1581185654205" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Kengwang博客
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            [技术分享] 阿里云认证学习笔记 - 实现调用API接口
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-10-02</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h1 id="阿里云认证学习笔记-实现调用api接口">阿里云认证学习笔记 - 实现调用API接口</h1>
+<h2 id="api的概念">API的概念</h2>
+<p>API (Application Programming Interface, 应用程序编程接口) 是一些预先定义的函数,目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力,而又无需访问源码或理解内部工作机制的细节</p>
+<h2 id="api的特点">API的特点</h2>
+<ul>
+<li>
+<p>API是一个明确定义的接口,可以为其他软件提供特定服务</p>
+</li>
+<li>
+<p>API可以小到只包含一个单独的函数,也可以达到包含数以百计的类,方法,全局函数,数据类型,枚举类型和常量等</p>
+</li>
+<li>
+<p>API的实现可以是私有的,也可以是开源的</p>
+</li>
+</ul>
+<h2 id="api的分类">API的分类</h2>
+<ul>
+<li>面向对象API</li>
+</ul>
+<p>举例: JAVA API 列表</p>
+<ul>
+<li>库与框架的API</li>
+</ul>
+<p>举例:Windows API, Windows DirectX</p>
+<ul>
+<li>API与协议</li>
+</ul>
+<p>举例:LDAP应用程序接口</p>
+<ul>
+<li>API与设备接口</li>
+</ul>
+<p>举例:PC BIOS调用接口,ASPI for SCSI设备接口</p>
+<ul>
+<li>Web API</li>
+</ul>
+<p>举例:Google地图API,新浪微博API,阿里云API市场</p>
+<h2 id="为什么使用">为什么使用</h2>
+<ul>
+<li>
+<p>快速扩展功能</p>
+</li>
+<li>
+<p>避免&quot;造轮子&quot;,提高开发效率</p>
+</li>
+<li>
+<p>降低模块之间的耦合度 <em>(重复部分)</em></p>
+</li>
+</ul>
+<p>[打广告开始 😃 ]</p>
+<h2 id="如何访问市场">如何访问市场</h2>
+<ol>
+<li>
+<p>打开 <a href="https://www.aliyun.com">阿里云官网</a></p>
+</li>
+<li>
+<p>点击_云市场_</p>
+</li>
+<li>
+<p>找到 <em>API</em></p>
+</li>
+</ol>
+<h2 id="web-api-协议">Web API 协议</h2>
+<h3 id="简介">简介</h3>
+<p>基于HTTP协议作为底层协议(便捷开发,多语言支持)</p>
+<p>HTTP请求机制如下:</p>
+<ul>
+<li>
+<p>客户端向服务器发送一个请求</p>
+</li>
+<li>
+<p>服务器给客户端响应,告诉客户端是否可以完成请求的工作</p>
+</li>
+</ul>
+<h3 id="http协议">HTTP协议</h3>
+<p>包含4个部分</p>
+<ul>
+<li>
+<p>URL (API调用地址)</p>
+</li>
+<li>
+<p>请求方式 (POST/GET/PUT/DELETE)</p>
+</li>
+<li>
+<p>Headers (请求头) UA/Content-type</p>
+</li>
+<li>
+<p>Body(请求体) 表单内容等</p>
+</li>
+</ul>
+<h3 id="请求方式">请求方式</h3>
+<p>请求方式告诉服务器客户端希望采取什么动作,有4种</p>
+<ul>
+<li>
+<p>GET : 请求服务器获取一个资源</p>
+</li>
+<li>
+<p>POST: 请求服务器创建一个新的资源</p>
+</li>
+<li>
+<p>PUT: 请求服务器编辑或更新一个已存在的资源</p>
+</li>
+<li>
+<p>DELETE:请求服务器删除一个资源</p>
+</li>
+</ul>
+<h3 id="请求头与请求主体">请求头与请求主体</h3>
+<h4 id="请求头headers">请求头(Headers)</h4>
+<p>提供了请求的元信息,是一个简单的项目列表,其中有客户端发送请求的时间和请求主题大小,身份认证等信息</p>
+<h4 id="请求体body">请求体(Body)</h4>
+<p>包含了客户端希望发送给服务器的数据</p>
+<h4 id="状态码">状态码</h4>
+<h5 id="成功状态">成功状态</h5>
+<p>HTTP状态码</p>
+<p>语义</p>
+<p>200 OK - [GET]</p>
+<p>服务器成功返回用户请求的数据</p>
+<p>201 CREATED - [POST/PUT/PATCH]</p>
+<p>用户新建或修改数据成功</p>
+<p>202 Accepted - [*]</p>
+<p>表示一个请求已经进入后台排队</p>
+<p>204 NO CONTENT - [DELETE]</p>
+<p>用户删除数据成功</p>
+<h5 id="服务端错误码">服务端错误码</h5>
+<p>错误代码</p>
+<p>HTTP状态码</p>
+<p>语义</p>
+<p>解决方案</p>
+<p>Internal Error</p>
+<p>500</p>
+<p>API网关内部错误</p>
+<p>建议重试</p>
+<p>Failed To invoke Backend Service</p>
+<p>500</p>
+<p>底层服务错误</p>
+<p>API提供者底层服务错误,建议重试,如果重试多次仍然不可用,可联系API服务商解决</p>
+<p>Service Unavailable</p>
+<p>503</p>
+<p>服务不可用</p>
+<p>建议稍后重试</p>
+<p>Async Service</p>
+<p>504</p>
+<p>后端服务超时</p>
+<p>建议稍后重试</p>
+<p>4xx表示业务报错.此时一般为参数错误,签名错误,请求方式有误或被流控限制等业务类错误,详细看</p>
+<p><a href="https://help.aliyun.com/document_detail/43906.html">错误代码表</a></p>
+<h4 id="返回数据格式">返回数据格式</h4>
+<p>JSON</p>
+<h4 id="api简单身份认证">API简单身份认证</h4>
+<h5 id="appcode">APPCODE</h5>
+<p>使用方法:</p>
+<p>在请求Header中添加Authorzation字段;</p>
+<p>值为 <code>APPCODE</code> + 半角空格+ <code>APPCODE值</code></p>
+<p>格式:<code>Authorzation: APPCODE AppCode值</code></p>
+<h5 id="appkey-appsecret">AppKey &amp; APPSecret</h5>
+<h2 id="考试笔记">考试笔记</h2>
+<ul>
+<li>
+<p>403为限流</p>
+</li>
+<li>
+<p>json格式如下</p>
+</li>
+</ul>
+<p>{<br>
+&quot;firstname&quot;:&quot;&quot;<br>
+}</p>
+<ul>
+<li>
+<p>调用 API 的流控限制为,单个 IP,QPS 不超过100</p>
+</li>
+<li>
+<p>你有权操作购买的 API 与 app 的授权和解除授权.由服务提供方授权给你的 app 的api,你无权操作解除授权</p>
+</li>
+<li>
+<p>获取 api 文档--创建应用--获取授权--调用 api</p>
+</li>
+<li>
+<p>请求方式</p>
+<ul>
+<li>
+<p>get:请求服务器获取一个资源</p>
+</li>
+<li>
+<p>post:请求服务器创建一个资源</p>
+</li>
+<li>
+<p>put:请求服务器更新或者编辑一个资源</p>
+</li>
+<li>
+<p>delete:请求服务器删除一个资源</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/10/02/uagwJP.png" alt="" loading="lazy"> <img src="https://s2.ax1x.com/2019/10/02/uagfJ0.png" alt="" loading="lazy"></p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://blog.tysv.top/post/379">
+                                <h3 class="post-title">
+                                    [杂谈] 微信网页版 # 何去何从
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E9%98%BF%E9%87%8C%E4%BA%91%E8%AE%A4%E8%AF%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%AE%9E%E7%8E%B0%E8%B0%83%E7%94%A8api%E6%8E%A5%E5%8F%A3">阿里云认证学习笔记 - 实现调用API接口</a>
+<ul>
+<li><a href="#api%E7%9A%84%E6%A6%82%E5%BF%B5">API的概念</a></li>
+<li><a href="#api%E7%9A%84%E7%89%B9%E7%82%B9">API的特点</a></li>
+<li><a href="#api%E7%9A%84%E5%88%86%E7%B1%BB">API的分类</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8">为什么使用</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E5%B8%82%E5%9C%BA">如何访问市场</a></li>
+<li><a href="#web-api-%E5%8D%8F%E8%AE%AE">Web API 协议</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#http%E5%8D%8F%E8%AE%AE">HTTP协议</a></li>
+<li><a href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F">请求方式</a></li>
+<li><a href="#%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E8%AF%B7%E6%B1%82%E4%B8%BB%E4%BD%93">请求头与请求主体</a>
+<ul>
+<li><a href="#%E8%AF%B7%E6%B1%82%E5%A4%B4headers">请求头(Headers)</a></li>
+<li><a href="#%E8%AF%B7%E6%B1%82%E4%BD%93body">请求体(Body)</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E7%A0%81">状态码</a>
+<ul>
+<li><a href="#%E6%88%90%E5%8A%9F%E7%8A%B6%E6%80%81">成功状态</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%94%99%E8%AF%AF%E7%A0%81">服务端错误码</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F">返回数据格式</a></li>
+<li><a href="#api%E7%AE%80%E5%8D%95%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81">API简单身份认证</a>
+<ul>
+<li><a href="#appcode">APPCODE</a></li>
+<li><a href="#appkey-appsecret">AppKey &amp; APPSecret</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%80%83%E8%AF%95%E7%AC%94%E8%AE%B0">考试笔记</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  这个博客由 <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>驱动 | 
+  <a class="rss" href="https://blog.tysv.top/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+        
+
+                    
+                        <script>
+    window.onload = function() {
+        var options = {
+            shortname: 'kengwang',
+            apikey: 'BmmgzGzn7RsVvjoeJrWja8kURFy8vuI5oiaYYlp6WdkJA9mXXDKmuwhuyOgVsvWK',
+        }
+        if ('') {
+            options.api = ''
+        }
+        var dsqjs = new DisqusJS(options)
+    }
+</script>
+                            
+                                
+</body>
+
+</html>
